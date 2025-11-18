@@ -3,150 +3,272 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Halloween Spooky Night</title>
+<title>Wicca Halloween Portal</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Poppins', sans-serif;
-        background: #000;
-        color: #ff6a00;
-        overflow-x: hidden;
-    }
+/* -------------------- GLOBAL STYLE -------------------- */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #000;
+    color: #ff7b00;
+    overflow-x: hidden;
+}
 
-    /* Floating bats animation */
-    @keyframes fly {
-        0% { transform: translateX(-10vw) translateY(0); }
-        50% { transform: translateX(50vw) translateY(-20px); }
-        100% { transform: translateX(110vw) translateY(0); }
-    }
+h2 {
+    color: #ff7b00;
+    text-shadow: 0 0 10px #b86bff;
+}
 
-    .bat {
-        position: absolute;
-        top: 20%;
-        width: 50px;
-        animation: fly 8s linear infinite;
-    }
+/* Floating magical runes */
+@keyframes floatRune {
+    0%   { transform: translateY(0) rotate(0); opacity: .7; }
+    50%  { transform: translateY(-20px) rotate(15deg); opacity: 1; }
+    100% { transform: translateY(0) rotate(-5deg); opacity: .7; }
+}
 
-    .bat:nth-child(2) {
-        top: 40%;
-        animation-duration: 10s;
-        opacity: 0.7;
-    }
+.rune {
+    position: absolute;
+    font-size: 2.2rem;
+    color: #b86bff;
+    animation: floatRune 5s ease-in-out infinite;
+    opacity: .8;
+}
+.r1 { top: 20%; left: 10%; }
+.r2 { top: 40%; right: 15%; animation-delay: 1s; }
+.r3 { bottom: 25%; left: 25%; animation-delay: 2s; }
 
-    .bat:nth-child(3) {
-        top: 60%;
-        animation-duration: 12s;
-        opacity: 0.5;
-    }
+/* -------------------- HEADER -------------------- */
+header {
+    text-align: center;
+    padding: 70px 20px;
+    background: radial-gradient(circle, #1a001a, #000);
+    border-bottom: 2px solid #ff7b00;
+}
+header h1 {
+    font-size: 3.5rem;
+    color: #ff7b00;
+    text-shadow: 0 0 25px #ff6a00, 0 0 55px #b86bff;
+    animation: glow 3s infinite alternate;
+}
+@keyframes glow {
+    from { text-shadow: 0 0 20px #ff6a00; }
+    to   { text-shadow: 0 0 40px #b86bff, 0 0 60px #ff4500; }
+}
 
-    /* Header */
-    header {
-        text-align: center;
-        padding: 60px 20px;
-        background: linear-gradient(#000, #1a0b00);
-        border-bottom: 2px solid #ff6a00;
-    }
+/* Wiccan Symbol */
+.wicca-symbol {
+    width: 120px;
+    margin: 0 auto 20px;
+    filter: drop-shadow(0 0 20px #b86bff);
+}
 
-    header h1 {
-        font-size: 4rem;
-        text-shadow: 0 0 20px #ff6a00, 0 0 40px #ff6a00;
-        animation: glow 3s infinite alternate;
-    }
+/* -------------------- SPELLBOOK NAV MENU -------------------- */
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
 
-    @keyframes glow {
-        from { text-shadow: 0 0 10px #ff6a00; }
-        to { text-shadow: 0 0 25px #ff6a00, 0 0 50px #ff4500; }
-    }
+nav a {
+    text-decoration: none;
+    color: #ff7b00;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: 2px dashed #b86bff;
+    border-radius: 6px;
+    transition: 0.3s;
+}
 
-    /* Main content */
-    .container {
-        padding: 40px;
-        max-width: 900px;
-        margin: auto;
-        text-align: center;
-    }
+nav a:hover {
+    background: #b86bff;
+    color: #000;
+    box-shadow: 0 0 15px #b86bff;
+}
 
-    h2 {
-        color: #ff6a00;
-    }
+/* -------------------- CONTENT -------------------- */
+.container {
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+}
 
-    .btn {
-        display: inline-block;
-        padding: 12px 30px;
-        margin-top: 20px;
-        border: 2px solid #ff6a00;
-        color: #ff6a00;
-        text-decoration: none;
-        font-size: 1.2rem;
-        border-radius: 6px;
-        transition: 0.3s;
-    }
+/* Candle Flame */
+@keyframes flame {
+    0%, 100% { opacity: 0.9; transform: scale(1); }
+    50%      { opacity: 1; transform: scale(1.1); }
+}
+.candle {
+    width: 40px;
+    margin: 25px auto;
+    display: block;
+    animation: flame 1.2s infinite;
+    filter: drop-shadow(0 0 15px #ff7b00);
+}
 
-    .btn:hover {
-        background: #ff6a00;
-        color: #000;
-        box-shadow: 0 0 20px #ff6a00;
-        cursor: pointer;
-    }
+/* Ritual Circle */
+.circle {
+    margin: 40px auto;
+    width: 260px;
+    height: 260px;
+    border: 3px dashed #b86bff;
+    border-radius: 50%;
+    animation: circleGlow 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #b86bff);
+}
+@keyframes circleGlow {
+    0%   { filter: drop-shadow(0 0 5px #b86bff); }
+    50%  { filter: drop-shadow(0 0 25px #ff7b00); }
+    100% { filter: drop-shadow(0 0 5px #b86bff); }
+}
 
-    /* Footer */
-    footer {
-        margin-top: 60px;
-        padding: 20px;
-        text-align: center;
-        border-top: 2px solid #ff6a00;
-        background: #0d0400;
-    }
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 20px;
+    border: 2px solid #ff7b00;
+    color: #ff7b00;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #ff7b00;
+    color: #000;
+    box-shadow: 0 0 20px #ff7b00;
+}
+
+/* -------------------- TAROT CARDS -------------------- */
+.tarot-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+.tarot {
+    width: 120px;
+    height: 200px;
+    background: url('https://i.imgur.com/g4D8pwh.png') center/cover;
+    border: 2px solid #b86bff;
+    border-radius: 10px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+.tarot:hover {
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 0 25px #b86bff;
+}
+
+/* -------------------- MOON PHASE -------------------- */
+#moon-phase {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #b86bff;
+}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    border-top: 2px solid #ff7b00;
+    background: #0c000c;
+}
 </style>
 </head>
 
 <body>
 
-<!-- Animated bats -->
-<img src="https://i.imgur.com/8K3o4oD.png" class="bat">
-<img src="https://i.imgur.com/8K3o4oD.png" class="bat">
-<img src="https://i.imgur.com/8K3o4oD.png" class="bat">
+<!-- Floating Runes -->
+<div class="rune r1">ᚨ</div>
+<div class="rune r2">ᛟ</div>
+<div class="rune r3">ᚹ</div>
 
 <header>
-    <h1>🎃 Spooky Halloween Night 🎃</h1>
+    <img src="https://i.imgur.com/UsdlI94.png" class="wicca-symbol">
+    <h1>✨ Wiccan Halloween Portal ✨</h1>
+
+    <!-- Spellbook Navigation -->
+    <nav>
+        <a href="#ritual">Ritual Circle</a>
+        <a href="#tarot">Tarot Reading</a>
+        <a href="#herbs">Herbal Magic</a>
+        <a href="#moon">Moon Phase</a>
+    </nav>
 </header>
 
 <div class="container">
-    <h2>Welcome to the Haunted Website</h2>
-    <p>
-        Enter if you dare...  
-        Tonight, ghosts whisper, pumpkins glow,  
-        and shadows come to life.
-    </p>
 
-    <a class="btn" onclick="spook()">Click for a Scare 👻</a>
+    <!-- Candle -->
+    <img src="https://i.imgur.com/TzowQkF.png" class="candle">
 
-    <h2 id="spook-text" style="opacity:0; transition:1s;">BOO! 👻</h2>
+    <h2 id="ritual">Enter the Ritual Circle</h2>
+    <p>Breathe deeply and step into the sacred energy.</p>
+    <div class="circle"></div>
+
+    <a class="btn" onclick="invoke()">Invoke Magic ✨</a>
+    <h2 id="spell" style="opacity:0; transition:1.5s; color:#b86bff;">
+        The circle is cast. So mote it be.
+    </h2>
+
+    <!-- Tarot Section -->
+    <h2 id="tarot">Tarot of the Night</h2>
+    <p>Hover to reveal their aura.</p>
+
+    <div class="tarot-container">
+        <div class="tarot"></div>
+        <div class="tarot"></div>
+        <div class="tarot"></div>
+    </div>
+
+    <!-- Herbal Magic Section -->
+    <h2 id="herbs">Herbal Magic 🌿</h2>
+    <p>Traditional herbs used in Wicca:</p>
+    <ul style="list-style:none; padding:0; line-height:1.8;">
+        <li>🌿 **Mugwort** – Psychic visions</li>
+        <li>🌿 **Sage** – Cleansing negative energy</li>
+        <li>🌿 **Lavender** – Peace, sleep, relaxation</li>
+        <li>🌿 **Rosemary** – Protection, clarity</li>
+        <li>🌿 **Basil** – Prosperity and love</li>
+    </ul>
+
+    <!-- Moon Phase Section -->
+    <h2 id="moon">Moon Phase 🌙</h2>
+    <p id="moon-phase">Loading moon data...</p>
+
+    <audio id="chime">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-soft-magical-bling-1351.mp3">
+    </audio>
+
 </div>
 
 <footer>
-    &copy; 2025 Haunted Web Designs – All Rights Frightened 👻
+    &copy; 2025 Mystic Web Designs – Blessed Be 🌙
 </footer>
 
 <script>
-function spook() {
-    document.getElementById('spook-text').style.opacity = 1;
-
-    // small shake effect
-    document.body.style.animation = "shake 0.4s";
-
-    setTimeout(() => document.body.style.animation = "", 500);
+/* --- Spell Invocation --- */
+function invoke() {
+    document.getElementById('spell').style.opacity = 1;
+    document.getElementById('chime').play();
 }
 
-@keyframes shake {
-    0% { transform: translateX(0); }
-    20% { transform: translateX(-10px); }
-    40% { transform: translateX(10px); }
-    60% { transform: translateX(-10px); }
-    80% { transform: translateX(10px); }
-    100% { transform: translateX(0); }
-}
+/* --- Live Moon Phase Fetch --- */
+fetch("https://api.farmsense.net/v1/moonphases/?d=" + Date.now())
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("moon-phase").innerHTML =
+            "Tonight’s moon: <b>" + data[0].Phase + "</b>";
+    })
+    .catch(() => {
+        document.getElementById("moon-phase").innerHTML =
+            "Moon phase unavailable (offline).";
+    });
 </script>
 
 </body>
